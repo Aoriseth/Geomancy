@@ -17,6 +17,10 @@ public class ItemInit {
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event){
         event.getRegistry()
-                .register(new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName("divination_rod"));
+                .register(new Item(
+                        new Item.Properties()
+                                .group(ItemGroup.MISC)
+                                .maxStackSize(1)
+                ).setRegistryName("divination_rod"));
     }
 }
