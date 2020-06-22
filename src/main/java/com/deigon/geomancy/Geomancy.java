@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.deigon.geomancy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -20,12 +20,14 @@ import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("geomancy")
-public class Geomancy
-{
+public class Geomancy {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "geomancy";
+    public static Geomancy instance;
 
     public Geomancy() {
+        instance = this;
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
