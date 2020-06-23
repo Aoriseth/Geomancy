@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
@@ -39,7 +40,7 @@ public class BlockInit {
 
 
     private static Item.Properties defaultBuilder() {
-        return new Item.Properties().group(ItemGroup.MISC);
+        return new Item.Properties().group(Geomancy.GeomancyItemGroup.instance);
     }
 
     private static Item.Properties unstackable() {
