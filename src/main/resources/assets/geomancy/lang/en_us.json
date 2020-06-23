@@ -1,3 +1,5 @@
 {
-  "item.geomancy.divination_rod": "Divination Rod"
+  "item.geomancy.divination_rod": "Divination Rod",
+
+  "block.geomancy.inscribed_dirt": "Inscribed Dirt"
 }
