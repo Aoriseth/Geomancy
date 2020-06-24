@@ -3,7 +3,7 @@ package com.deigon.geomancy.init;
 import com.deigon.geomancy.Geomancy;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemTier;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,13 +18,15 @@ public class ItemInit {
 
     public static final Item divination_rod = null;
     public static final Item dirt_ball = null;
+    public static final Item stone_gauntlet = null;
 
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event){
         IForgeRegistry<Item> r = event.getRegistry();
 
-        register(r, "divination_rod", new Item(unstackable()));
+        register(r, "divination_rod", new DivinationRodItem(unstackable()));
         register(r, "dirt_ball", new Item(defaultBuilder().food(new Food.Builder().fastToEat().hunger(1).saturation(1f).setAlwaysEdible().build())));
+        register(r, "stone_gauntlet", new StoneGauntletItem(ItemTier.STONE, unstackable().maxDamage(20).setNoRepair()));
     }
 
     public static Item.Properties defaultBuilder() {
