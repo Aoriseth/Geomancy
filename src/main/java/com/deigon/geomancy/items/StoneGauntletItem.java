@@ -7,6 +7,7 @@ import com.mojang.brigadier.LiteralMessage;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -28,7 +29,8 @@ public class StoneGauntletItem extends TieredItem {
     enum GauntletActions{
         TRANSFORM,
         RAISE,
-        LAUNCH
+        LAUNCH,
+        INSPECT
     }
     private int currentMode = 0;
 
@@ -63,9 +65,17 @@ public class StoneGauntletItem extends TieredItem {
                 raiseEarth(context);
                 useDurability(context);
                 return ActionResultType.SUCCESS;
+            case INSPECT:
+                inspectItemInMainHand(context);
+                return ActionResultType.SUCCESS;
         }
 
         return ActionResultType.FAIL;
+    }
+
+    private void inspectItemInMainHand(ItemUseContext context) {
+        PlayerEntity player = context.getPlayer();
+        ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.MAINHAND);
     }
 
     private void raiseEarth(ItemUseContext context) {

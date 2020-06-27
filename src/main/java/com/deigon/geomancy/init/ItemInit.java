@@ -2,6 +2,7 @@ package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
 import com.deigon.geomancy.items.DivinationRodItem;
+import com.deigon.geomancy.items.GeomancerTomeItem;
 import com.deigon.geomancy.items.StoneGauntletItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -29,6 +30,7 @@ public class ItemInit {
         register(r, "divination_rod", new DivinationRodItem(unstackable()));
         register(r, "dirt_ball", new Item(defaultBuilder().food(new Food.Builder().fastToEat().hunger(1).saturation(1f).setAlwaysEdible().build())));
         register(r, "stone_gauntlet", new StoneGauntletItem(ItemTier.STONE, unstackable().maxDamage(20).setNoRepair()));
+        register(r, "geomancer_tome", new GeomancerTomeItem(unstackable()));
     }
 
     public static Item.Properties defaultBuilder() {

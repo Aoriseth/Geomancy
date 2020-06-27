@@ -10,6 +10,7 @@ import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -30,7 +31,7 @@ public class BlockInit {
         Block.Properties dirtBuilder = Block.Properties.create(Material.EARTH).hardnessAndResistance(0).sound(SoundType.GROUND);
 
         register(r, "inscribed_dirt", new Block(dirtBuilder));
-        register(r, "essence_spike", new EssenceSpikeBlock(defaultBlockBuilder()));
+        register(r, "essence_spike", new EssenceSpikeBlock(defaultBlockBuilder().hardnessAndResistance(0.8f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
     }
 
     @SubscribeEvent

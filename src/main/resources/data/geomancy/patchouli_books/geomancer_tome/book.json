@@ -3,5 +3,9 @@
   "landing_text": "A dirty tome filled with wonders",
   "version": 1,
   "creative_tab": "geomancy",
-  "pause_game": true
+  "pause_game": true,
+  "custom_book_item": "geomancy:geomancer_tome",
+  "dont_generate_book": true,
+  "advancement_namespaces": [ "geomancy" ],
+  "book_texture": "patchouli:textures/gui/book_gray.png"
 }
