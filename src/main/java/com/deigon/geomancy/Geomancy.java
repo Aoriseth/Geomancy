@@ -90,7 +90,7 @@ public class Geomancy {
     }
 
     public static class GeomancyItemGroup extends ItemGroup{
-        public static final GeomancyItemGroup instance = new GeomancyItemGroup(ItemGroup.getGroupCountSafe(), "Geomancy");
+        public static final GeomancyItemGroup instance = new GeomancyItemGroup(ItemGroup.getGroupCountSafe(), "geomancy");
 
         public GeomancyItemGroup(int index, String label) {
             super(index, label);

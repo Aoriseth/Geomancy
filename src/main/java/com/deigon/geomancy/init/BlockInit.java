@@ -1,6 +1,7 @@
 package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
+import com.deigon.geomancy.blocks.EssenceSpikeBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -21,7 +22,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public class BlockInit {
 
     public static final Block inscribed_dirt = null;
-
+    public static final Block essence_spike = null;
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event){
         IForgeRegistry<Block> r = event.getRegistry();
@@ -29,6 +30,7 @@ public class BlockInit {
         Block.Properties dirtBuilder = Block.Properties.create(Material.EARTH).hardnessAndResistance(0).sound(SoundType.GROUND);
 
         register(r, "inscribed_dirt", new Block(dirtBuilder));
+        register(r, "essence_spike", new EssenceSpikeBlock(defaultBlockBuilder()));
     }
 
     @SubscribeEvent
@@ -36,8 +38,12 @@ public class BlockInit {
         IForgeRegistry<Item> r = event.getRegistry();
 
         register(r, "inscribed_dirt", new BlockItem(inscribed_dirt, defaultBuilder()));
+        register(r, "essence_spike", new BlockItem(essence_spike, unstackable()));
     }
 
+    private static Block.Properties defaultBlockBuilder() {
+        return Block.Properties.create(Material.EARTH);
+    }
 
     private static Item.Properties defaultBuilder() {
         return new Item.Properties().group(Geomancy.GeomancyItemGroup.instance);

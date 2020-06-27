@@ -1,6 +1,8 @@
 package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
+import com.deigon.geomancy.items.DivinationRodItem;
+import com.deigon.geomancy.items.StoneGauntletItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;

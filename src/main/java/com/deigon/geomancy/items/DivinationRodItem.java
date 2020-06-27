@@ -1,4 +1,4 @@
-package com.deigon.geomancy.init;
+package com.deigon.geomancy.items;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;

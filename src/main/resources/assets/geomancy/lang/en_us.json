@@ -4,6 +4,7 @@
   "item.geomancy.stone_gauntlet": "Stone Gauntlet",
 
   "block.geomancy.inscribed_dirt": "Inscribed Dirt",
+  "block.geomancy.essence_spike": "Essence Spike",
 
-  "itemGroup.Geomancy": "Geomancy"
+  "itemGroup.geomancy": "Geomancy"
 }

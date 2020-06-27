@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures":{
+        "all": "geomancy:blocks/essence_spike"
+    }
+}
