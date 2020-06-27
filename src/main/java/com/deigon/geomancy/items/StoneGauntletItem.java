@@ -1,10 +1,14 @@
 package com.deigon.geomancy.items;
 
 import com.deigon.geomancy.blocks.EssenceSpikeBlock;
+import com.deigon.geomancy.init.BlockInit;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.LiteralMessage;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.MovingPistonBlock;
+import net.minecraft.block.PistonBlockStructureHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -13,14 +17,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.TieredItem;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.PistonType;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentUtils;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +60,7 @@ public class StoneGauntletItem extends TieredItem {
         switch (GauntletActions.values()[currentMode]){
             case TRANSFORM:
                 convertDirtToSand(context);
+                convertIronOreToMagnetite(context);
                 useDurability(context);
                 return ActionResultType.SUCCESS;
             case RAISE:
@@ -71,6 +73,17 @@ public class StoneGauntletItem extends TieredItem {
         }
 
         return ActionResultType.FAIL;
+    }
+
+    private void convertIronOreToMagnetite(ItemUseContext context) {
+        World world = context.getWorld();
+        if (world.getBlockState(context.getPos()) == Blocks.IRON_ORE.getDefaultState()){
+            world.playSound(context.getPlayer(), context.getPos(), SoundEvents.BLOCK_METAL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+            if (!world.isRemote){
+                world.setBlockState(context.getPos(), BlockInit.magnetite_ore.getDefaultState());
+            }
+        }
     }
 
     private void inspectItemInMainHand(ItemUseContext context) {

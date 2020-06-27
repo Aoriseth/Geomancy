@@ -2,6 +2,7 @@ package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
 import com.deigon.geomancy.blocks.EssenceSpikeBlock;
+import com.deigon.geomancy.blocks.MagnetiteOreBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -24,6 +25,8 @@ public class BlockInit {
 
     public static final Block inscribed_dirt = null;
     public static final Block essence_spike = null;
+    public static final Block magnetite_ore = null;
+
     @SubscribeEvent
     public static void registerBlocks(final RegistryEvent.Register<Block> event){
         IForgeRegistry<Block> r = event.getRegistry();
@@ -32,6 +35,7 @@ public class BlockInit {
 
         register(r, "inscribed_dirt", new Block(dirtBuilder));
         register(r, "essence_spike", new EssenceSpikeBlock(defaultBlockBuilder().hardnessAndResistance(0.8f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
+        register(r, "magnetite_ore", new MagnetiteOreBlock(defaultBlockBuilder().hardnessAndResistance(3f).harvestLevel(1).harvestTool(ToolType.PICKAXE)));
     }
 
     @SubscribeEvent
@@ -40,6 +44,7 @@ public class BlockInit {
 
         register(r, "inscribed_dirt", new BlockItem(inscribed_dirt, defaultBuilder()));
         register(r, "essence_spike", new BlockItem(essence_spike, unstackable()));
+        register(r, "magnetite_ore", new BlockItem(magnetite_ore, defaultBuilder()));
     }
 
     private static Block.Properties defaultBlockBuilder() {
