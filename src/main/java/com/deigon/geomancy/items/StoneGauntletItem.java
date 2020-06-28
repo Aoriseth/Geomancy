@@ -1,7 +1,7 @@
 package com.deigon.geomancy.items;
 
 import com.deigon.geomancy.blocks.EssenceSpikeBlock;
-import com.deigon.geomancy.init.BlockInit;
+import com.deigon.geomancy.init.GeomancyRegistry;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.LiteralMessage;
@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentUtils;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ public class StoneGauntletItem extends TieredItem {
     }
 
     @Override
+    @Nonnull
     public ActionResultType onItemUse(ItemUseContext context) {
         World world = context.getWorld();
         ItemStack item = context.getItem();
@@ -81,7 +83,7 @@ public class StoneGauntletItem extends TieredItem {
             world.playSound(context.getPlayer(), context.getPos(), SoundEvents.BLOCK_METAL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
             if (!world.isRemote){
-                world.setBlockState(context.getPos(), BlockInit.magnetite_ore.getDefaultState());
+                world.setBlockState(context.getPos(), GeomancyRegistry.MAGNETITE_ORE.get().getDefaultState());
             }
         }
     }
@@ -118,6 +120,7 @@ public class StoneGauntletItem extends TieredItem {
     }
 
     @Override
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (!worldIn.isRemote){
             if (playerIn.isCrouching()){
@@ -161,8 +164,7 @@ public class StoneGauntletItem extends TieredItem {
             List<BlockPos> list = pistonblockstructurehelper.getBlocksToMove();
             List<BlockState> list1 = Lists.newArrayList();
 
-            for(int i = 0; i < list.size(); ++i) {
-                BlockPos blockpos1 = list.get(i);
+            for (BlockPos blockpos1 : list) {
                 BlockState blockstate = worldIn.getBlockState(blockpos1);
                 list1.add(blockstate);
                 map.put(blockpos1, blockstate);
