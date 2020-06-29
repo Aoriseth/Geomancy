@@ -6,6 +6,10 @@
     {
       "type": "text",
       "text": "A simple dowsing rod, made with two sticks and some rope. A dowsing rod can be used to find $(l:ley_lines)ley lines."
+    },{
+      "type": "crafting",
+      "recipe": "geomancy:dowsing_rod",
+      "text": "A simple dowsing rod can be made from sticks and string."
     }
   ]
 }

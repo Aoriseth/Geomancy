@@ -1,9 +1,8 @@
 package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
-import com.deigon.geomancy.blocks.EssenceSpikeBlock;
-import com.deigon.geomancy.blocks.MagnetiteOreBlock;
 import com.deigon.geomancy.items.DivinationRodItem;
+import com.deigon.geomancy.items.DowsingRodItem;
 import com.deigon.geomancy.items.GeomancerTomeItem;
 import com.deigon.geomancy.items.StoneGauntletItem;
 import net.minecraft.block.Block;
@@ -24,8 +23,8 @@ public class GeomancyRegistry {
 
     // Register Blocks
     public static final RegistryObject<Block> INSCRIBED_DIRT = BLOCKS.register("inscribed_dirt", () -> new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0).sound(SoundType.GROUND)));
-    public static final RegistryObject<Block> ESSENCE_SPIKE = BLOCKS.register("essence_spike", () -> new EssenceSpikeBlock(defaultBlockBuilder().hardnessAndResistance(1f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
-    public static final RegistryObject<Block> MAGNETITE_ORE = BLOCKS.register("magnetite_ore", () -> new MagnetiteOreBlock(defaultBlockBuilder().hardnessAndResistance(3f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
+    public static final RegistryObject<Block> ESSENCE_SPIKE = BLOCKS.register("essence_spike", () -> new Block(defaultBlockBuilder().hardnessAndResistance(1f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
+    public static final RegistryObject<Block> MAGNETITE_ORE = BLOCKS.register("magnetite_ore", () -> new Block(defaultBlockBuilder().hardnessAndResistance(3f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
 
     // Register BlockItems
     public static final RegistryObject<Item> INSCRIBED_DIRT_BLOCKITEM = ITEMS.register("inscribed_dirt", ()-> new BlockItem(INSCRIBED_DIRT.get(), defaultBuilder()));
@@ -37,6 +36,8 @@ public class GeomancyRegistry {
     public static final RegistryObject<Item> DIRT_BALL = ITEMS.register("dirt_ball", ()->new Item(defaultBuilder().food(new Food.Builder().fastToEat().hunger(1).saturation(0).setAlwaysEdible().build())));
     public static final RegistryObject<Item> STONE_GAUNTLET = ITEMS.register("stone_gauntlet", ()->new StoneGauntletItem(ItemTier.STONE, unstackable().maxDamage(20).setNoRepair()));
     public static final RegistryObject<Item> GEOMANCER_TOME = ITEMS.register("geomancer_tome", ()->new GeomancerTomeItem(unstackable()));
+    public static final RegistryObject<Item> MAGNETITE_SHARD = ITEMS.register("magnetite_shard", ()->new Item(defaultBuilder()));
+    public static final RegistryObject<Item> DOWSING_ROD = ITEMS.register("dowsing_rod", ()->new DowsingRodItem(unstackable()));
 
     private static Item.Properties defaultBuilder() {
         return new Item.Properties().group(Geomancy.GeomancyItemGroup.instance);

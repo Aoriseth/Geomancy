@@ -1,6 +1,5 @@
 package com.deigon.geomancy.items;
 
-import com.deigon.geomancy.blocks.EssenceSpikeBlock;
 import com.deigon.geomancy.init.GeomancyRegistry;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -46,7 +45,7 @@ public class StoneGauntletItem extends TieredItem {
         World world = context.getWorld();
         ItemStack item = context.getItem();
 
-        if (world.getBlockState(context.getPos()).getBlock() instanceof EssenceSpikeBlock){
+        if (world.getBlockState(context.getPos()) == GeomancyRegistry.ESSENCE_SPIKE.get().getDefaultState()){
             if (!world.isRemote){
                 item.setDamage(0);
             }
