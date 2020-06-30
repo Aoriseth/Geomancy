@@ -7,6 +7,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
+
+// check https://github.com/DcZipPL/lightestlampsmod/blob/master/src/main/java/tk/dczippl/lightestlamp/blocks/EpsilonLampBlock.java
+// Try to implement large range lighting
+
 public class SunStoneBlock extends Block {
     public SunStoneBlock() {
         super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1f));
