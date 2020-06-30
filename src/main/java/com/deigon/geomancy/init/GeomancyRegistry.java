@@ -1,6 +1,7 @@
 package com.deigon.geomancy.init;
 
 import com.deigon.geomancy.Geomancy;
+import com.deigon.geomancy.blocks.SunStoneBlock;
 import com.deigon.geomancy.items.DivinationRodItem;
 import com.deigon.geomancy.items.DowsingRodItem;
 import com.deigon.geomancy.items.GeomancerTomeItem;
@@ -25,11 +26,13 @@ public class GeomancyRegistry {
     public static final RegistryObject<Block> INSCRIBED_DIRT = BLOCKS.register("inscribed_dirt", () -> new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0).sound(SoundType.GROUND)));
     public static final RegistryObject<Block> ESSENCE_SPIKE = BLOCKS.register("essence_spike", () -> new Block(defaultBlockBuilder().hardnessAndResistance(1f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
     public static final RegistryObject<Block> MAGNETITE_ORE = BLOCKS.register("magnetite_ore", () -> new Block(defaultBlockBuilder().hardnessAndResistance(3f).harvestTool(ToolType.PICKAXE).harvestLevel(1)));
+    public static final RegistryObject<Block> SUN_STONE = BLOCKS.register("sun_stone", SunStoneBlock::new);
 
     // Register BlockItems
     public static final RegistryObject<Item> INSCRIBED_DIRT_BLOCKITEM = ITEMS.register("inscribed_dirt", ()-> new BlockItem(INSCRIBED_DIRT.get(), defaultBuilder()));
     public static final RegistryObject<Item> ESSENCE_SPIKE_BLOCKITEM = ITEMS.register("essence_spike", ()-> new BlockItem(ESSENCE_SPIKE.get(), defaultBuilder()));
     public static final RegistryObject<Item> MAGNETITE_ORE_BLOCKITEM = ITEMS.register("magnetite_ore", ()-> new BlockItem(MAGNETITE_ORE.get(), defaultBuilder()));
+    public static final RegistryObject<Item> SUN_STONE_BLOCKITEM = ITEMS.register("sun_stone", ()-> new BlockItem(SUN_STONE.get(), defaultBuilder()));
 
     // Register Items
     public static final RegistryObject<Item> DIVINATION_ROD = ITEMS.register("divination_rod", ()->new DivinationRodItem(unstackable()));
