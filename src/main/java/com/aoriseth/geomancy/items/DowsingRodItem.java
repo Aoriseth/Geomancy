@@ -45,8 +45,8 @@ public class DowsingRodItem extends Item {
     private void showLeyLines(World world, PlayerEntity user, DefaultParticleType particle) {
         for (int i = -20; i <= 20; i++) {
             for (int j = -1; j <= 1; j++) {
-                world.addParticle(particle, lastLocation.getX() + j, user.getY() + 1.5, user.getZ() + i, 0, -0.1, 0);
-                world.addParticle(particle, user.getX() + i, user.getY() + 1.5, lastLocation.getZ() + j, 0, -0.1, 0);
+                world.addParticle(particle, lastLocation.getX() + j + 0.5, user.getY() + 1.5, user.getZ() + i + 0.5, 0, -0.1, 0);
+                world.addParticle(particle, user.getX() + i + 0.5, user.getY() + 1.5, lastLocation.getZ() + j + 0.5, 0, -0.1, 0);
             }
         }
     }
