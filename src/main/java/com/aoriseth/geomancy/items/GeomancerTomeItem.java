@@ -9,6 +9,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import vazkii.patchouli.api.PatchouliAPI;
 
 public class GeomancerTomeItem extends Item {
 
@@ -22,7 +23,7 @@ public class GeomancerTomeItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (user instanceof ServerPlayerEntity){
             ServerPlayerEntity player = (ServerPlayerEntity) user;
-//            PatchouliAPI.instance.openBookGUI(player, Registry.ITEM.getId(this));
+            PatchouliAPI.instance.openBookGUI(player, Registry.ITEM.getId(this));
         }
         return TypedActionResult.success(user.getStackInHand(hand));
     }
