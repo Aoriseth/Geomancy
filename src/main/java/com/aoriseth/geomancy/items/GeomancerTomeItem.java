@@ -17,6 +17,7 @@ public class GeomancerTomeItem extends Item {
         super(new Item.Settings()
         .maxCount(1)
         .group(Geomancy.itemGroup));
+
     }
 
     @Override
