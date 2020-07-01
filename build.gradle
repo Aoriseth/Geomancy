@@ -23,8 +23,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	compileOnly("vazkii.patchouli:Patchouli:1.16-36.190:api")
-	runtimeOnly("vazkii.patchouli:Patchouli:1.16-36.190")
+//	modCompile("vazkii.patchouli:Patchouli_1.16-fabric:1.16-37.21-FABRIC:api")
+//	modRuntime("vazkii.patchouli:Patchouli_1.16-fabric:1.16-37.21-FABRIC")
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }

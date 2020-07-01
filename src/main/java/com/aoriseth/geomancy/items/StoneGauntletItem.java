@@ -12,6 +12,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class StoneGauntletItem extends ToolItem {
@@ -73,7 +74,7 @@ public class StoneGauntletItem extends ToolItem {
     private void inspectItemInMainHand(ItemUsageContext context) {
         PlayerEntity player = context.getPlayer();
         ItemStack stackInHand = player.getStackInHand(Hand.MAIN_HAND);
-        player.sendMessage((stackInHand.getItem().getName()), true);
+        player.sendMessage(new LiteralText(Registry.ITEM.getId(stackInHand.getItem()).toString()), true);
     }
 
     private void raiseEarth(ItemUsageContext context) {
