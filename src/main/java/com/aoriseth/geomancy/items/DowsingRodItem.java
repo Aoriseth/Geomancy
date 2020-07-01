@@ -19,44 +19,45 @@ public class DowsingRodItem extends Item {
 
     public DowsingRodItem() {
         super(new Item.Settings()
-        .group(Geomancy.itemGroup)
-        .maxCount(1));
+                .group(Geomancy.itemGroup)
+                .maxCount(1));
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!world.isClient){
-            StructureFeature[] leyLineLocations = new StructureFeature[]{StructureFeature.DESERT_PYRAMID, StructureFeature.END_CITY, StructureFeature.FORTRESS, StructureFeature.IGLOO, StructureFeature.MANSION, StructureFeature.MINESHAFT,StructureFeature.BURIED_TREASURE};
-            for (StructureFeature location:leyLineLocations){
-                BlockPos structure = world.getServer().getWorld(World.OVERWORLD).locateStructure(location, user.getBlockPos(), 100, false);
-                if (structure!=null){
-                    lastLocation = structure;
-                    break;
-                }
-            }
+        if (!world.isClient) {
+            lastLocation = findStructure(world, user);
 
-            if (lastLocation == null){
+            if (lastLocation == null) {
                 user.sendMessage(new LiteralText("Failed to find treasure"), true);
                 return TypedActionResult.success(user.getStackInHand(hand));
             }
             return TypedActionResult.success(user.getStackInHand(hand));
-        }else {
-            if (lastLocation == null){
+        } else {
+            if (lastLocation == null) {
                 return TypedActionResult.success(user.getStackInHand(hand));
             }
-            DefaultParticleType particle = ParticleTypes.END_ROD;
-            for (int i = -20; i <= 20; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    world.addParticle(particle, lastLocation.getX()+j, user.getY()+1.5, user.getZ()+i, 0, -0.1, 0);
-                }
-            }
-            for (int i = -20; i <= 20; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    world.addParticle(particle, user.getX()+i, user.getY()+1.5, lastLocation.getZ()+j, 0, -0.1, 0);
-                }
+            showLeyLines(world, user, ParticleTypes.END_ROD);
+        }
+        return TypedActionResult.fail(user.getStackInHand(hand));
+    }
+
+    private void showLeyLines(World world, PlayerEntity user, DefaultParticleType particle) {
+        for (int i = -20; i <= 20; i++) {
+            for (int j = -1; j <= 1; j++) {
+                world.addParticle(particle, lastLocation.getX() + j, user.getY() + 1.5, user.getZ() + i, 0, -0.1, 0);
+                world.addParticle(particle, user.getX() + i, user.getY() + 1.5, lastLocation.getZ() + j, 0, -0.1, 0);
             }
         }
+    }
 
-        return TypedActionResult.fail(user.getStackInHand(hand));
+    private BlockPos findStructure(World world, PlayerEntity user) {
+        StructureFeature[] leyLineLocations = new StructureFeature[]{StructureFeature.DESERT_PYRAMID, StructureFeature.END_CITY, StructureFeature.FORTRESS, StructureFeature.IGLOO, StructureFeature.MANSION, StructureFeature.MINESHAFT, StructureFeature.BURIED_TREASURE};
+        BlockPos structure = null;
+
+        for (StructureFeature location : leyLineLocations) {
+            structure = world.getServer().getWorld(World.OVERWORLD).locateStructure(location, user.getBlockPos(), 100, false);
+        }
+        return structure;
     }
 }
