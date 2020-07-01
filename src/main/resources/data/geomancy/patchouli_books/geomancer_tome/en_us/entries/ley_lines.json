@@ -1,0 +1,15 @@
+{
+  "name": "Ley lines",
+  "icon": "minecraft:water",
+  "category": "earth_energies",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Ley lines are ancient highways for earth energy, formed during the birth of the world. It is believed that these lines serve as guides for alien spacecraft."
+    },
+    {
+      "type": "text",
+      "text": "Because of the high concentrations of magical energy at the intersection of these ley lines, they are often used for the location of special structures such as temples and fortresses. It is simple to attune to the energy of a ley line by using a $(l:basics/dowsing_rod)dowsing rod."
+    }
+  ]
+}

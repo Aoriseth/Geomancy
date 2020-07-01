@@ -1,0 +1,16 @@
+{
+  "name": "Magnetite shard",
+  "icon": "geomancy:magnetite_shard",
+  "category": "basics",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Refining magnetite ore will leave you with magnetite shards, these can be used to create lodestones and are essential in rune crafting."
+    },
+    {
+      "type": "smelting",
+      "recipe": "geomancy:magnetite_shard"
+    }
+
+  ]
+}
