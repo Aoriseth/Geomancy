@@ -65,10 +65,15 @@ public class StoneGauntletItem extends ToolItem {
                 return ActionResult.SUCCESS;
             case INSPECT:
                 inspectItemInMainHand(context);
+                inspectBlockClicked(context);
                 return ActionResult.SUCCESS;
         }
 
         return ActionResult.FAIL;
+    }
+
+    private void inspectBlockClicked(ItemUsageContext context) {
+        context.getPlayer().sendMessage(new LiteralText(Registry.BLOCK.getId(context.getWorld().getBlockState(context.getBlockPos()).getBlock()).toString()),true);
     }
 
     private void inspectItemInMainHand(ItemUsageContext context) {
