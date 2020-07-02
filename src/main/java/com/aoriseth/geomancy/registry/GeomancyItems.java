@@ -1,6 +1,7 @@
 package com.aoriseth.geomancy.registry;
 
 import com.aoriseth.geomancy.Geomancy;
+import com.aoriseth.geomancy.items.DivinationRodItem;
 import com.aoriseth.geomancy.items.DowsingRodItem;
 import com.aoriseth.geomancy.items.GeomancerTomeItem;
 import com.aoriseth.geomancy.items.StoneGauntletItem;
@@ -11,7 +12,7 @@ import net.minecraft.util.registry.Registry;
 public class GeomancyItems {
 
     public static final Item DOWSING_ROD = register("dowsing_rod", new DowsingRodItem());
-    public static final Item DIVINATION_ROD = register("divination_rod", new Item(getDefaultSettings()));
+    public static final Item DIVINATION_ROD = register("divination_rod", new DivinationRodItem());
     public static final Item DIRT_BALL = register("dirt_ball", new Item(getDefaultSettings()));
     public static final Item STONE_GAUNTLET = register("stone_gauntlet", new StoneGauntletItem());
     public static final Item GEOMANCER_TOME = register("geomancer_tome", new GeomancerTomeItem());

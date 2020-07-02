@@ -11,5 +11,5 @@
   "block.geomancy.magnetite_ore": "Magnetite Ore",
 
 
-  "itemGroup.geomancy": "Geomancy"
+  "itemGroup.geomancy.general": "Geomancy"
 }
