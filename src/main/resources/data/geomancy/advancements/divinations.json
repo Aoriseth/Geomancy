@@ -1,0 +1,33 @@
+{
+  "display": {
+    "title": {
+      "text": "Divinations"
+    },
+    "description": {
+      "text": "Make a Dowsing Rod"
+    },
+    "icon": {
+      "item": "geomancy:dowsing_rod"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria":{
+    "get dowsing rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "geomancy:dowsing_rod",
+            "count": {
+              "min": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "geomancy:root"
+}

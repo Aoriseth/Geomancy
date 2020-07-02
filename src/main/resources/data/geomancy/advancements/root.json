@@ -1,0 +1,39 @@
+{
+  "display": {
+    "title": {
+      "text": "Sticks and Stones"
+    },
+    "description": {
+      "text": "Collect some sticks and stone blocks to begin your journey"
+    },
+    "icon": {
+      "item": "minecraft:stone"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "get string and three sticks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:stick",
+            "count": {
+              "min": 1
+            }
+          },
+          {
+            "item": "minecraft:cobblestone",
+            "count": {
+              "min": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}
