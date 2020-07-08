@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "text": "Because of the high concentrations of magical energy at the intersection of these ley lines, they are often used for the location of special structures such as temples and fortresses. It is simple to attune to the energy of a ley line by using a $(l:basics/dowsing_rod)dowsing rod."
+      "text": "Because of the high concentrations of magical energy at the intersection of these ley lines, these locations are often used for building special structures such as temples and fortresses.$(br2)It is simple to attune to the energy of a ley line by using a $(l:basics/dowsing_rod)dowsing rod."
     }
   ]
 }

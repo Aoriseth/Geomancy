@@ -1,0 +1,12 @@
+{
+  "name": "Figure 'Via'",
+  "icon": "geomancy:via_effect",
+  "category": "divinations",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Via, meaning 'The Way' resembles a road or path to travel. This figure can have both positive or negative meanings. "
+    }
+  ],
+  "advancement": "geomancy:via"
+}

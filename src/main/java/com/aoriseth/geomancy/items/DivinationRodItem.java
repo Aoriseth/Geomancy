@@ -2,9 +2,12 @@ package com.aoriseth.geomancy.items;
 
 import com.aoriseth.geomancy.Geomancy;
 import com.aoriseth.geomancy.registry.GeomancyBlocks;
+import com.aoriseth.geomancy.registry.GeomancyEffects;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
@@ -50,6 +53,9 @@ public class DivinationRodItem extends Item {
             for (IntProperty stage : stages) {
                 if (blockState.get(stage) <= 0){
                     placeMarkAt(context, inscriptionValue, stage);
+                    if (stage == FOURTH_INSCRIPTION){
+                        context.getPlayer().addStatusEffect(new StatusEffectInstance(GeomancyEffects.VIA, 5*20, 0, true, false, true));
+                    }
                     break;
                 }
             }

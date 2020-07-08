@@ -1,0 +1,15 @@
+{
+  "name": "Geomantic Figures",
+  "icon": "geomancy:via_effect",
+  "category": "divinations",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Geomantic figures can be drawn on top of a block by using the $(l:basics/divination_implement) Divination Implement $() with sand in your inventory. After marking sand four(4) times with the implement, a full geomantic figure is drawn.  "
+    },
+    {
+      "type": "text",
+      "text": "As soon as a figure is completed, the divination is made and the future is set. As soon as the figure dissipates (and the status effect disappears), something will occur in accordance to the drawn figure."
+    }
+  ]
+}

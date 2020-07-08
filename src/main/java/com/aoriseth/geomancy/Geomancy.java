@@ -1,6 +1,7 @@
 package com.aoriseth.geomancy;
 
 import com.aoriseth.geomancy.registry.GeomancyBlocks;
+import com.aoriseth.geomancy.registry.GeomancyEffects;
 import com.aoriseth.geomancy.registry.GeomancyItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -12,6 +13,7 @@ import static com.aoriseth.geomancy.registry.GeomancyItems.DOWSING_ROD;
 
 public class Geomancy implements ModInitializer {
 	public static final ItemGroup itemGroup = FabricItemGroupBuilder.build(new Identifier("geomancy", "general"), () -> new ItemStack(DOWSING_ROD));
+	public static final String MOD_ID = "geomancy";
 
 	@Override
 	public void onInitialize() {
@@ -20,5 +22,6 @@ public class Geomancy implements ModInitializer {
 
 		GeomancyItems.init();
 		GeomancyBlocks.init();
+		GeomancyEffects.init();
 	}
 }

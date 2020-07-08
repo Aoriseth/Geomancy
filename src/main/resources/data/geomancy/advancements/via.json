@@ -1,0 +1,28 @@
+{
+  "display": {
+    "title": {
+      "text": "Figure 'Via'"
+    },
+    "description": {
+      "text": "Draw Via in sand using a divination rod"
+    },
+    "icon": {
+      "item": "geomancy:dowsing_rod"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "draw via": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "geomancy:via_effect": {}
+        }
+      }
+    }
+  },
+  "parent": "geomancy:divinations"
+}
