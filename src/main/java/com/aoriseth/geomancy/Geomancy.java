@@ -1,5 +1,6 @@
 package com.aoriseth.geomancy;
 
+import com.aoriseth.geomancy.registry.GeomancyBlockEntities;
 import com.aoriseth.geomancy.registry.GeomancyBlocks;
 import com.aoriseth.geomancy.registry.GeomancyEffects;
 import com.aoriseth.geomancy.registry.GeomancyItems;
@@ -23,5 +24,6 @@ public class Geomancy implements ModInitializer {
 		GeomancyItems.init();
 		GeomancyBlocks.init();
 		GeomancyEffects.init();
+		GeomancyBlockEntities.init();
 	}
 }

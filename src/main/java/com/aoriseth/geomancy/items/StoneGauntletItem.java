@@ -1,10 +1,15 @@
 package com.aoriseth.geomancy.items;
 
 import com.aoriseth.geomancy.Geomancy;
+import com.aoriseth.geomancy.blocks.BurrowTunnelBlockEntity;
+import com.aoriseth.geomancy.registry.GeomancyBlockEntities;
 import com.aoriseth.geomancy.registry.GeomancyBlocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.LiteralText;
@@ -12,8 +17,12 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 public class StoneGauntletItem extends ToolItem {
 
@@ -21,7 +30,8 @@ public class StoneGauntletItem extends ToolItem {
         TRANSFORM,
         RAISE,
         LAUNCH,
-        INSPECT
+        INSPECT,
+        BURROW
     }
 
     private int currentMode = 0;
@@ -67,9 +77,31 @@ public class StoneGauntletItem extends ToolItem {
                 inspectItemInMainHand(context);
                 inspectBlockClicked(context);
                 return ActionResult.SUCCESS;
+            case BURROW:
+                createTunnelToSpawn(context);
+                return ActionResult.SUCCESS;
         }
 
         return ActionResult.FAIL;
+    }
+
+    private void createTunnelToSpawn(ItemUsageContext context) {
+        World world = context.getWorld();
+        BlockPos blockPos = context.getBlockPos();
+        if (!world.isClient){
+            BlockState blockState = world.getBlockState(blockPos);
+            world.setBlockState(blockPos.up().north(), blockState);
+            world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+
+            BlockState burrowBlock = GeomancyBlocks.BURROW_TUNNEL_BLOCK.getDefaultState();
+            world.setBlockState(blockPos, burrowBlock);
+
+            ServerPlayerEntity player = (ServerPlayerEntity) context.getPlayer();
+            BlockPos spawnPointPosition = player.getSpawnPointPosition();
+            BurrowTunnelBlockEntity blockEntity = GeomancyBlockEntities.BURROW_TUNNEL_ENTITY.get(world, blockPos);
+            blockEntity.setHomeLocation(spawnPointPosition.up());
+        }
+        world.playSound(context.getPlayer(), blockPos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1f, 1f);
     }
 
     private void inspectBlockClicked(ItemUsageContext context) {
