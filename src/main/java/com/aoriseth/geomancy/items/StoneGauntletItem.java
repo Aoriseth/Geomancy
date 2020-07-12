@@ -56,7 +56,7 @@ public class StoneGauntletItem extends ToolItem {
 
         if (world.getBlockState(context.getBlockPos()) == GeomancyBlocks.BURROW_TUNNEL_BLOCK.getDefaultState()){
             if (!world.isClient){
-                removeBurrowLocation(world, context.getBlockPos());
+                removeBurrowTunnel(world, context.getBlockPos());
             }
             return ActionResult.SUCCESS;
         }
@@ -88,15 +88,15 @@ public class StoneGauntletItem extends ToolItem {
         return ActionResult.FAIL;
     }
 
-    private void removeBurrowLocation(World world, BlockPos blockPos) {
+    private void removeBurrowTunnel(World world, BlockPos blockPos) {
         BurrowTunnelBlockEntity blockEntity = GeomancyBlockEntities.BURROW_TUNNEL_ENTITY.get(world, blockPos);
         BlockPos targetLocation = blockEntity.getTargetLocation();
 
-        // remove burrow entities
-
-        // remove burrow blocks
-        world.setBlockState(targetLocation, Blocks.AIR.getDefaultState());
-        world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+        // remove burrow blocks and close earth
+        world.setBlockState(targetLocation, world.getBlockState(targetLocation.north().up()));
+        world.setBlockState(blockPos, world.getBlockState(blockPos.north().up()));
+        world.setBlockState(targetLocation.north().up(), Blocks.AIR.getDefaultState());
+        world.setBlockState(blockPos.north().up(), Blocks.AIR.getDefaultState());
     }
 
     private void createTunnelToSpawn(ItemUsageContext context) {
