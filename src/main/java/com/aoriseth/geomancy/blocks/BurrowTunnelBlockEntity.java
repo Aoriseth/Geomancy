@@ -29,11 +29,11 @@ public class BurrowTunnelBlockEntity extends BlockEntity {
         return tag;
     }
 
-    public BlockPos getHomeLocation() {
+    public BlockPos getTargetLocation() {
         return homeLocation;
     }
 
-    public void setHomeLocation(BlockPos homeLocation) {
+    public void setTargetLocation(BlockPos homeLocation) {
         this.homeLocation = homeLocation;
         markDirty();
     }

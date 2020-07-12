@@ -5,7 +5,6 @@ import com.aoriseth.geomancy.blocks.SandDivinationBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
@@ -18,7 +17,7 @@ public class GeomancyBlocks {
     public final static Block MAGNETITE_ORE = register("magnetite_ore", new Block(FabricBlockSettings.of(Material.METAL).strength(3f).breakByTool(FabricToolTags.PICKAXES, MiningLevel.STONE.getLevel()).requiresTool()));
     public final static Block SUN_STONE = register("sun_stone", new Block(getDefaultSettings()));
     public final static Block DIVINATION_SAND = register("divination_sand", new SandDivinationBlock());
-    public final static Block BURROW_TUNNEL_BLOCK = register("burrow_tunnel_block", new BurrowTunnelBlock());
+    public final static Block BURROW_TUNNEL_BLOCK = register("burrow_tunnel", new BurrowTunnelBlock());
 
     public static Block register(String name, Block block) {
         GeomancyItems.register(name, new BlockItem(block, GeomancyItems.getDefaultSettings()));

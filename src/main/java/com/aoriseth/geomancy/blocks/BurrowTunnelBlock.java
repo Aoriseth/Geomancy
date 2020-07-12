@@ -4,9 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -28,9 +25,9 @@ public class BurrowTunnelBlock extends BlockWithEntity {
         if (!world.isClient){
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof BurrowTunnelBlockEntity){
-                BlockPos homeLocation = ((BurrowTunnelBlockEntity) blockEntity).getHomeLocation();
+                BlockPos homeLocation = ((BurrowTunnelBlockEntity) blockEntity).getTargetLocation();
                 if (homeLocation != null){
-                    entity.requestTeleport(homeLocation.getX(), homeLocation.getY(), homeLocation.getZ());
+                    entity.requestTeleport(homeLocation.getX(), homeLocation.getY()+1, homeLocation.getZ()+2);
                 }
             }
         }
@@ -41,5 +38,8 @@ public class BurrowTunnelBlock extends BlockWithEntity {
         return new BurrowTunnelBlockEntity();
     }
 
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
 
 }
